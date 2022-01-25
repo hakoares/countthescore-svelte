@@ -1,0 +1,47 @@
+/* Important. This file must not contain any renderable code */
+@import "variables";
+
+
+// Font-size function: Usage: fontsize('title');
+@function textSize ($name) {
+  @return map-get($fontSize, $name);
+}
+
+@function urlColor($colour) {
+  @return '%23' + str-slice('#{$colour}', 2, -1)
+}
+
+/// Mixin to manage responsive breakpoints
+/// @author Hugo Giraudel
+/// @param {String} $breakpoint - Breakpoint name
+/// @require $breakpoints
+@mixin respond-to($breakpoint) {
+    // If the key exists in the map
+    @if map-has-key($breakpoints, $breakpoint) {
+      // Prints a media query based on the value
+      @media #{inspect(map-get($breakpoints, $breakpoint))} {
+        @content;
+      }
+    }
+   
+    // If the key doesn't exist in the map
+    @else {
+      @warn "Unfortunately, no value could be retrieved from `#{$breakpoint}`. "
+          + "Available breakpoints are: #{map-keys($breakpoints)}.";
+    }
+  }
+
+
+  /** Helper to tigth properties to color preferences */
+@mixin color-scheme($value: light) {
+  @media (prefers-color-scheme: $value) {
+    @content; 
+  }
+}
+
+
+@mixin darkmode-text() {
+  @include color-scheme(dark) {
+    color: color(text-light);
+   }
+}

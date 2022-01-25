@@ -3,44 +3,32 @@
 </script>
 
 <script lang="ts">
-	import Counter from '$lib/Counter.svelte';
+	import Board from '$lib/Board.svelte';
+import { onMount } from 'svelte';
+	
 </script>
 
 <svelte:head>
-	<title>Home</title>
+	<title>CountTheScore</title>
 </svelte:head>
 
 <section>
-	<h1>
-		<div class="welcome">
-			<picture>
-				<source srcset="svelte-welcome.webp" type="image/webp" />
-				<img src="svelte-welcome.png" alt="Welcome" />
-			</picture>
-		</div>
-
-		to your new<br />SvelteKit app
-	</h1>
-
-	<h2>
-		try editing <strong>src/routes/index.svelte</strong>
-	</h2>
-
-	<Counter />
+	<Board />
 </section>
 
-<style>
+<style lang="scss">
 	section {
 		display: flex;
 		flex-direction: column;
 		justify-content: center;
 		align-items: center;
 		flex: 1;
+		h1 {
+			width: 100%;
+			color:red;
+		}
 	}
 
-	h1 {
-		width: 100%;
-	}
 
 	.welcome {
 		position: relative;
