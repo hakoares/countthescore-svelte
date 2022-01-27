@@ -1,0 +1,13 @@
+{
+	"help.slug": "La oss komme igang!",
+	"help.controllers.use": "Bruk",
+	"help.controllers.press": "Trykk",
+	"help.controllers.and": "og",
+	"help.controllers.teamA": "for å gi eller ta poeng fra lag 1.",
+	"help.controllers.teamB": "for å gi eller ta poeng fra lag 2.",
+	"help.controllers.reset": "for å nullstille poengene.",
+	"help.controllers.fullscreen": "for fullskjerm.",
+	"help.controllers.themebackground": "for å bytte mellom lyst og mørk tema.",
+	"help.controllers.themetext": "for å bytte mellom lys og mørk tekst.",
+	"help.controllers.help": "for hjelp."
+}

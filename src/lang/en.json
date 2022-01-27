@@ -1,0 +1,13 @@
+{
+	"help.slug": "Let's get started!",
+	"help.controllers.use": "Use",
+	"help.controllers.press": "Press",
+	"help.controllers.and": "and",
+	"help.controllers.teamA": "to increase and decrease the score for team one.",
+	"help.controllers.teamB": "to increase and decrease the score for team two.",
+	"help.controllers.reset": "to reset the points for both teams.",
+	"help.controllers.fullscreen": "for fullscreen.",
+	"help.controllers.themebackground": "to switch between dark and light background theme.",
+	"help.controllers.themetext": "to switch between dark and light text theme.",
+	"help.controllers.help": "for help."
+}

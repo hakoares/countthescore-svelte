@@ -14,34 +14,27 @@
 	--background-without-opacity: rgba(255, 255, 255, 0.7);
 	--column-width: 42rem;
 	--column-margin-top: 4rem;
+	--backgroundColor: red;
 }
 
 body {
 	min-height: 100vh;
 	margin: 0;
-	/* background-color: var(--primary-color); */
-	/* background: linear-gradient(
-		180deg,
-		var(--primary-color) 0%,
-		var(--secondary-color) 10.45%,
-		var(--tertiary-color) 41.35%
-	); */
+	/* background: #000; */
 }
 
 body::before {
 	content: '';
-	width: 80vw;
+	width: 100vw;
 	height: 100vh;
 	position: absolute;
 	top: 0;
-	left: 10vw;
+	left: 0;
 	z-index: -1;
-	background: radial-gradient(
-		50% 50% at 50% 50%,
-		var(--pure-white) 0%,
-		rgba(255, 255, 255, 0) 100%
-	);
-	opacity: 0.05;
+	/* background: -webkit-radial-gradient(center, rgba(255, 255, 255, 0.09), rgba(255, 255, 255, 0.0)); */
+	/* background: -moz-radial-gradient(center, rgba(255, 255, 255, 0.09), rgba(255, 255, 255, 0.0)); */
+	/* background: radial-gradient(ellipse at center, rgba(255, 255, 255, 0.09), rgba(255, 255, 255, 0.0)); */
+	/* opacity: 0.05; */
 }
 
 #svelte {

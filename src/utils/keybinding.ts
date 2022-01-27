@@ -1,3 +1,6 @@
+import { settings } from '../utils/store';
+import { get } from 'svelte/store';
+
 export class KeyEvent {
 	currentKeyCode: number;
 	allEvents: { trigger: string[]; callback: () => void }[];
@@ -7,9 +10,14 @@ export class KeyEvent {
 	}
 
 	onKeyDown(keycode: string, callback: () => void): this {
-		const upperKeycode = keycode.toUpperCase();
-		const lowerKeycode = keycode.toLowerCase();
-		this.allEvents.push({ trigger: [upperKeycode, lowerKeycode], callback: callback });
+		if (keycode == 'Escape') {
+			console.log(keycode);
+			this.allEvents.push({ trigger: [keycode], callback: callback });
+		} else {
+			const upperKeycode = keycode.toUpperCase();
+			const lowerKeycode = keycode.toLowerCase();
+			this.allEvents.push({ trigger: [upperKeycode, lowerKeycode], callback: callback });
+		}
 		return this;
 	}
 
@@ -18,9 +26,14 @@ export class KeyEvent {
 	}
 
 	listener = (e: KeyboardEvent): void => {
+		const disable = get(settings).viewHelper;
 		this.allEvents.forEach((event) => {
 			if (event.trigger.includes(e.key)) {
-				event.callback();
+				if (disable && e.key === 'Escape') {
+					event.callback();
+				} else if (!disable && e.key !== 'Escape') {
+					event.callback();
+				}
 			}
 		});
 	};
