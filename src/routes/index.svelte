@@ -3,28 +3,32 @@
 </script>
 
 <script lang="ts">
+	// Components
 	import Board from '$lib/Board.svelte';
-	import Helper from '$lib/Helper.svelte';
+	import Settings from '$lib/Settings.svelte';
 
-	import { addMessages, init, getLocaleFromNavigator } from 'svelte-i18n';
+	// Language
+	import { addMessages, init } from 'svelte-i18n';
 	import no from '../lang/no.json';
 	import en from '../lang/en.json';
-	addMessages('English', en);
-	addMessages('Norsk', no);
-	init({
-		fallbackLocale: 'English',
-		initialLocale: getLocaleFromNavigator(),
-	})
 	
+	
+	addMessages('en', en);
+	addMessages('no', no);
+
+	init({
+		fallbackLocale: 'en',
+		initialLocale: 'en',
+	})	
+
 </script>
 
 <svelte:head>
 	<title>CountTheScore</title>
 </svelte:head>
 
-	
-	<Helper/>
-	<Board />
+<Settings/>
+<Board />
 
 
 <style lang="scss">

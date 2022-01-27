@@ -1,28 +1,16 @@
 /* Important. This file must not contain any renderable code */
 $colors: (
-    // 'primary': #238cef,
-    'primary': #443124,
-    'chapter': #443124,
-    'highlight': #236aef4b,
-    'text-dark': #222222,
-    'text-light': rgb(253, 253, 254),
-    'chapterEnding': #3d3d3d,
-    'muted': #747474,
-    'darkmode-muted': #bdbdbd,
-    'link': #222,
-    'link-hover': rgb(88, 88, 88),
-    'link-visited':#222,
-    'factbox-bg': #e3e3e3,
-    'gallery-dot': #3d3d3d,
-    'polaroid': #fcfcfc,
-    'darkmode-polaroid': #ffffff,
-    'darkmode-bg': #181818,
-    studio: #f6231e,
-    studioBlue: #0674db,
-    red: #ef3a3a,
-    redOld: #db0606,
-    yellow: #efd746,
-    lightgrey: #f5f5f5
+    paper: #fff,
+    lightest: #F7F9FA,
+    lighterer: #e6e9eb,
+    lighter: #9a9c9c,
+    light: #6C7072,
+    base: #404446,
+    dark: #303437,
+    darker: #202325,
+    darkest: #090A0A,
+
+
 );
 
 
@@ -51,11 +39,11 @@ $colors: (
 @function colorDark ($name) {
   $color: map-get($colors, $name);
   $light: lightness($color);
-  @if $light - 10% < 0 {
-    @return #000;
-  } @else {
+  // @if $light - 10% < 0 {
+  //   @return #000;
+  // } @else {
     @return darken($color,  $light - 10%);
-  }
+  // }
   
 }
 

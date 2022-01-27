@@ -1,2 +1,93 @@
 @import 'mixins';
 @import 'variables';
+
+.btn {
+    padding: 0.5rem 0.8rem;
+    color: color(base);
+    background: color(lighterer);
+    border-radius: 48px;
+    display: flex;
+    align-items: center;
+    gap: 4px;
+    border: 1px solid color(lighterer);
+    width: fit-content;
+    .icon {    
+        height: 18px;
+        fill: color(base);
+        &-upload {
+            margin-bottom: 3px;
+        }
+    }
+
+    &:hover {
+        /* text-decoration: underline; */
+        border: 1px solid color(lighter);
+        cursor: pointer;
+    }                        
+
+}
+
+.btn-ghost {
+    color: color(base);
+    background-color: transparent;
+    border: none;
+    display: flex;
+    justify-content: flex-end;
+    align-items: center;
+
+    .icon {
+        fill: color(base);
+        width: 1.1rem;
+        height: 1.1rem;
+        &.dark {
+            fill: color(base);
+        }
+       
+    }
+    &:hover {
+        .icon.dark {
+            fill: color(darker);
+        }
+        .icon {
+            fill: color(darker);
+        }
+        cursor: pointer;
+        
+    } 
+}
+
+.input {
+    border: 1px solid color(lighterer);
+    border-radius: 4px;
+    padding: 0.5rem;
+    width: 50%;
+    font-size: 1rem;
+    color: color(dark);
+    &:focus {
+        outline: none;
+        border: 1px solid color(base) !important;
+    }
+    &:hover {
+        border: 1px solid color(lighter);
+    }
+}
+
+
+.dropdown {
+    border: 1px solid color(lighterer);
+    border-radius: 4px;
+    padding: 0.5rem;
+    min-width: 10rem;
+    font-size: 1rem;
+    color: color(dark);
+    background-color: color(paper);
+    &:focus {
+        outline: none;
+        border: 1px solid color(base) !important;
+    }
+    &:hover {
+        border: 1px solid color(lighter);
+
+        cursor: pointer;
+    }
+}    

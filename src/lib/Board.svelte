@@ -4,18 +4,15 @@
 	import { settings } from '../utils/store';
 
 	interface team {
-		name: string;
 		score: number;
 	}
 	
 	let key: KeyEvent;
 	let teams: team[] = [
 		{
-			name: "Lag A",
 			score: 0
 		},
 		{
-			name: "Lag 2",
 			score: 0
 		}
 	];
@@ -100,18 +97,23 @@
 	})
 
 
+	$: backgroundStyling = () => {
+		if($settings.backgroundImage) {
+			return `background-image: url(${$settings.backgroundImage});`
+		} else {
+			return `background-color: ${$settings.theme.background === 'light' ? '#fff' : '#000'};`
+		}
+	}
 
 </script>
 
-<section class="board" style:background={$settings.theme.background === 'light' ? '#fff' : '#000'}>
-	
-	{#each teams as team}
+<section class="board" style="{backgroundStyling()}">
+	{#each teams as team, i}
 		<aside class="team {$settings.theme.text}" >
 			<h3>{team.score}</h3>		
-			<p>{team.name}</p>
+			<p>{$settings.teamNames[i]}</p>
 		</aside>
 	{/each}
-
 </section>
 
 <style lang="scss">
@@ -126,6 +128,9 @@
 		justify-content: center;
 		align-items: center;
 		flex: 1;
+		background-repeat: no-repeat;
+		background-size: cover;
+		background-position: 50%;
 		
 		.team {
 			display: flex;

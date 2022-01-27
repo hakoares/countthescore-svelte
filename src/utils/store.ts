@@ -5,5 +5,7 @@ export const settings = writable({
 		text: 'light',
 		background: 'dark'
 	},
+	teamNames: ['Team 1', 'Team B'],
+	backgroundImage: undefined,
 	viewHelper: true
 });

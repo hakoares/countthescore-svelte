@@ -1,13 +1,32 @@
 {
-	"help.slug": "La oss komme igang!",
-	"help.controllers.use": "Bruk",
-	"help.controllers.press": "Trykk",
-	"help.controllers.and": "og",
-	"help.controllers.teamA": "for å gi eller ta poeng fra lag 1.",
-	"help.controllers.teamB": "for å gi eller ta poeng fra lag 2.",
-	"help.controllers.reset": "for å nullstille poengene.",
-	"help.controllers.fullscreen": "for fullskjerm.",
-	"help.controllers.themebackground": "for å bytte mellom lyst og mørk tema.",
-	"help.controllers.themetext": "for å bytte mellom lys og mørk tekst.",
-	"help.controllers.help": "for hjelp."
+  "en": "Engelsk",
+  "no": "Norsk",
+  "settings": {
+    "slug": "La oss komme igang!",
+    "controllers": {
+      "use": "Bruk",
+      "press": "Trykk",
+      "and": "og",
+      "teamA": "for å gi eller ta poeng fra lag 1.",
+      "teamB": "for å gi eller ta poeng fra lag 2.",
+      "reset": "for å nullstille poengene.",
+      "fullscreen": "for fullskjerm.",
+      "themebackground": "for å bytte mellom lyst og mørk tema.",
+      "themetext": "for å bytte mellom lys og mørk tekst.",
+      "help": "for hjelp.",
+      "title": "Hvordan bruke poengtavla"
+    },
+    "language": {
+      "title": "Språk"
+    },
+    "background": {
+      "title": "Endre bakgrunnsbilde",
+      "upload": "Last opp bilde"
+    }
+  },
+  "teamname": {
+    "title": "Endre lagnavn",
+    "teamA": "Lag 1",
+    "teamB": "Lag 2"
+  }
 }
