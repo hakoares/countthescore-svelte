@@ -28,9 +28,6 @@
 	};
 </script>
 
-<svelte:head>
-	<script defer data-domain="countthescore.com" src="https://plausible.io/js/plausible.js"></script>
-</svelte:head>
 <Header hide={mouseIdle} />
 
 <main class:hide={mouseIdle} on:mousemove={handleMousemove}>
