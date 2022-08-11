@@ -11,26 +11,24 @@
 	import { addMessages, init } from 'svelte-i18n';
 	import no from '../lang/no.json';
 	import en from '../lang/en.json';
-	
-	
+
 	addMessages('en', en);
 	addMessages('no', no);
 
 	init({
 		fallbackLocale: 'en',
-		initialLocale: 'en',
-	})	
-
+		initialLocale: 'en'
+	});
 </script>
 
 <svelte:head>
 	<title>CountTheScore</title>
 </svelte:head>
-
-<Settings/>
+<Settings />
 <Board />
 
-
 <style lang="scss">
-
+	.hide {
+		cursor: none !important;
+	}
 </style>

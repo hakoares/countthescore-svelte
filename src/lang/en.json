@@ -1,32 +1,37 @@
 {
-  "en": "English",
-  "no": "Norwegian",
-  "settings": {
-    "slug": "Let's get started!",
-    "controllers": {
-      "use": "Use",
-      "press": "Press",
-      "and": "and",
-      "teamA": "to increase and decrease the score for team one.",
-      "teamB": "to increase and decrease the score for team two.",
-      "reset": "to reset the points for both teams.",
-      "fullscreen": "for fullscreen.",
-      "themebackground": "to switch between dark and light background theme.",
-      "themetext": "to switch between dark and light text theme.",
-      "help": "for help.",
-      "title": "How to controll the scoreboard"
-    },
-    "language": {
-      "title": "Language"
-    },
-    "background": {
-      "title": "Change background image",
-      "upload": "Upload background image"
-    }
-  },
-  "teamname": {
-    "title": "Change team name",
-    "teamA": "Team 1",
-    "teamB": "Team 2"
-  }
+	"en": "English",
+	"no": "Norsk",
+	"settings": {
+		"slug": "Let's get started!",
+		"controllers": {
+			"use": "Use",
+			"press": "Press",
+			"and": "and",
+			"teamA": "to increase and decrease the score for team one.",
+			"teamB": "to increase and decrease the score for team two.",
+			"reset": "to reset the points for both teams.",
+			"fullscreen": "for fullscreen.",
+			"themebackground": "to switch between dark and light background theme.",
+			"themetext": "to switch between dark and light text theme.",
+			"help": "for help.",
+			"title": "How to controll the scoreboard"
+		},
+		"language": {
+			"title": "Language"
+		},
+		"background": {
+			"title": "Change background image",
+			"upload": "Upload background image"
+		},
+		"text": {
+			"title": "Change text color",
+			"light": "Light",
+			"dark": "Dark"
+		}
+	},
+	"teamname": {
+		"title": "Change team name",
+		"teamA": "Team 1",
+		"teamB": "Team 2"
+	}
 }

@@ -11,7 +11,6 @@ export class KeyEvent {
 
 	onKeyDown(keycode: string, callback: () => void): this {
 		if (keycode == 'Escape') {
-			console.log(keycode);
 			this.allEvents.push({ trigger: [keycode], callback: callback });
 		} else {
 			const upperKeycode = keycode.toUpperCase();

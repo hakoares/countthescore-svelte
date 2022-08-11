@@ -1,20 +1,10 @@
 <script lang="ts">
-	import { page } from '$app/stores';
-	import logo from './svelte-logo.svg';
+	export let hide = false;
 </script>
 
-<header>
+<header class:hide>
 	<div class="corner">
-		<a href="https://kit.svelte.dev">
-			<!-- HÅ -->
-			<img src={logo} alt="SvelteKit" />
-		</a>
-	</div>
-
-	
-
-	<div class="corner">
-		<!-- TODO put something else here? github link? -->
+		<a href="https://hakon.app">H</a>
 	</div>
 </header>
 
@@ -24,6 +14,11 @@
 		z-index: 100;
 		display: flex;
 		justify-content: space-between;
+		transition: 0.3s;
+		will-change: opacity;
+		&.hide {
+			opacity: 0;
+		}
 	}
 
 	.corner {
@@ -49,6 +44,4 @@
 		font-weight: 600;
 		text-decoration: none;
 	}
-
-	
 </style>
