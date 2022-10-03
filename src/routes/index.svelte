@@ -23,6 +23,10 @@
 
 <svelte:head>
 	<title>CountTheScore</title>
+	<meta
+		name="description"
+		content="Scoreboard for two teams on big screen. Count the score. Grab the mic. Scoreboard for big screen. Game show."
+	/>
 </svelte:head>
 <Settings />
 <Board />
