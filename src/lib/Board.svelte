@@ -8,21 +8,25 @@
 	}
 
 	let key: KeyEvent;
-	let teams: team[] = [
+	let teams = $state<team[]>([
 		{
 			score: 0
 		},
 		{
 			score: 0
 		}
-	];
+	]);
 
 	onMount(() => {
 		key = new KeyEvent()
 			// Fullscreen
 			.onKeyDown('F', () => {
 				if (!document.fullscreenElement) {
-					var elem: any = document.documentElement;
+					const elem = document.documentElement as HTMLElement & {
+						msRequestFullscreen?: () => void;
+						mozRequestFullScreen?: () => void;
+						webkitRequestFullscreen?: () => void;
+					};
 					if (elem.requestFullscreen) {
 						elem.requestFullscreen();
 					} else if (elem.msRequestFullscreen) {
@@ -85,17 +89,15 @@
 		if (key) key.remove();
 	});
 
-	$: backgroundStyling = () => {
-		if ($settings.backgroundImage) {
-			return `background-image: url(${$settings.backgroundImage});`;
-		} else {
-			return `background-color: ${$settings.theme.background === 'light' ? '#fff' : '#000'};`;
-		}
-	};
+	let backgroundStyling = $derived(
+		$settings.backgroundImage
+			? `background-image: url(${$settings.backgroundImage});`
+			: `background-color: ${$settings.theme.background === 'light' ? '#fff' : '#000'};`
+	);
 </script>
 
-<section class="board" style={backgroundStyling()}>
-	{#each teams as team, i}
+<section class="board" style={backgroundStyling}>
+	{#each teams as team, i (i)}
 		<aside class="team {$settings.theme.text}">
 			<h3>{team.score}</h3>
 			<p>{$settings.teamNames[i]}</p>
@@ -130,9 +132,13 @@
 			}
 			&.dark {
 				color: #151515;
-				text-shadow: 2.8px 2.8px 2.2px rgba(0, 0, 0, 0.02), 6.7px 6.7px 5.3px rgba(0, 0, 0, 0.028),
-					12.5px 12.5px 10px rgba(0, 0, 0, 0.035), 22.3px 22.3px 17.9px rgba(0, 0, 0, 0.042),
-					41.8px 41.8px 33.4px rgba(0, 0, 0, 0.05), 100px 100px 80px rgba(0, 0, 0, 0.07);
+				text-shadow:
+					2.8px 2.8px 2.2px rgba(0, 0, 0, 0.02),
+					6.7px 6.7px 5.3px rgba(0, 0, 0, 0.028),
+					12.5px 12.5px 10px rgba(0, 0, 0, 0.035),
+					22.3px 22.3px 17.9px rgba(0, 0, 0, 0.042),
+					41.8px 41.8px 33.4px rgba(0, 0, 0, 0.05),
+					100px 100px 80px rgba(0, 0, 0, 0.07);
 			}
 			h3 {
 				margin: 0;

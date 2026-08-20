@@ -3,8 +3,10 @@
 	import { settings } from '../utils/store';
 	import '../app.css';
 
-	let mouseIdle = false;
-	let idleTimer = null;
+	let { children } = $props();
+
+	let mouseIdle = $state(false);
+	let idleTimer: ReturnType<typeof setTimeout> | undefined;
 	let idleState = false;
 
 	const showFoo = (time: number) => {
@@ -30,11 +32,11 @@
 
 <Header hide={mouseIdle} />
 
-<main class:hide={mouseIdle} on:mousemove={handleMousemove}>
-	<slot />
+<main class:hide={mouseIdle} onmousemove={handleMousemove}>
+	{@render children()}
 </main>
 
-<footer />
+<footer></footer>
 
 <style lang="scss">
 	main {

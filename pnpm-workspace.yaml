@@ -1,0 +1,9 @@
+allowBuilds:
+  '@parcel/watcher': true
+  es5-ext: true
+  esbuild: true
+  svelte-preprocess: true
+minimumReleaseAgeExclude:
+  - sass@1.103.0
+  - svelte@5.56.10
+  - vite@8.2.2

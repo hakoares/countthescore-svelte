@@ -1,84 +1,106 @@
 /* Important. This file must not contain any renderable code */
+@use 'sass:map';
+@use 'sass:color';
+
 $colors: (
-    paper: #fff,
-    lightest: #F7F9FA,
-    lighterer: #e6e9eb,
-    lighter: #9a9c9c,
-    light: #6C7072,
-    base: #404446,
-    dark: #303437,
-    darker: #202325,
-    darkest: #090A0A,
-
-
+	paper: #fff,
+	lightest: #f7f9fa,
+	lighterer: #e6e9eb,
+	lighter: #9a9c9c,
+	light: #6c7072,
+	base: #404446,
+	dark: #303437,
+	darker: #202325,
+	darkest: #090a0a
 );
 
-
-
 // Color function: Usage: color('white');
-@function color ($name) {
-  @return map-get($colors, $name);
+@function color($name) {
+	@return map.get($colors, $name);
 }
 
 // Get lighten version of color
-@function colorLight ($name) {
-  $color: map-get($colors, $name);
-  $light: lightness($color);
-  @if $light > 94% {
-    @if 95% - $light < 0 {
-      @return #fff;
-    } @else {
-      @return lighten($color, 4%);
-    }
-  } @else {
-    @return lighten($color, 95% - $light);
-  }
+@function colorLight($name) {
+	$color: map.get($colors, $name);
+	$light: color.channel($color, 'lightness', $space: hsl);
+	@if $light > 94% {
+		@if 95% - $light < 0 {
+			@return #fff;
+		} @else {
+			@return color.adjust($color, $lightness: 4%);
+		}
+	} @else {
+		@return color.adjust($color, $lightness: 95% - $light);
+	}
 }
 
 // Get darker version of color
-@function colorDark ($name) {
-  $color: map-get($colors, $name);
-  $light: lightness($color);
-  // @if $light - 10% < 0 {
-  //   @return #000;
-  // } @else {
-    @return darken($color,  $light - 10%);
-  // }
-  
+@function colorDark($name) {
+	$color: map.get($colors, $name);
+	$light: color.channel($color, 'lightness', $space: hsl);
+	// @if $light - 10% < 0 {
+	//   @return #000;
+	// } @else {
+	@return color.adjust($color, $lightness: -($light - 10%));
+	// }
 }
 
+$fontFamily:
+	'Inter',
+	Helvetica,
+	-apple-system,
+	BlinkMacSystemFont,
+	'Segoe UI',
+	Roboto,
+	Oxygen-Sans,
+	Ubuntu,
+	Cantarell,
+	'Helvetica Neue',
+	sans-serif;
 
-$fontFamily: 'Inter', Helvetica, -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto,
-Oxygen-Sans, Ubuntu, Cantarell, "Helvetica Neue", sans-serif;
-
-$fontSize : (
-    'title': 6em,
-    'title-mobile': 2.6em,
-    'h0': 3em,
-    'h1': 2.2em,
-    'h2': 1.8em,
-    'h3': 1.6em,
-    'h4': 1.4em,
-    'h5': 1.2em,
-    'h6': 1.1em,
-    'text': 1em,
-    'text-mobil': .8em,
-    'small': .8em,
-    'smaller': .7em, 
-    "xsmall": .6em
+$fontSize: (
+	'title': 6em,
+	'title-mobile': 2.6em,
+	'h0': 3em,
+	'h1': 2.2em,
+	'h2': 1.8em,
+	'h3': 1.6em,
+	'h4': 1.4em,
+	'h5': 1.2em,
+	'h6': 1.1em,
+	'text': 1em,
+	'text-mobil': 0.8em,
+	'small': 0.8em,
+	'smaller': 0.7em,
+	'xsmall': 0.6em
 );
 
-
 $breakpoints: (
-  'mobile-small':  ( min-width:  405px ),
-  'mobile':  ( min-width:  481px ),
-  'small': ( min-width:  768px),
-  'large':  ( min-width: 1024px),
-  'desktop-small':  ( min-width: 768px ),
-  'desktop':  ( min-width: 1200px ),
-  'desktop-std':  ( min-width: 1536px ),
-  'desktop-large':  ( min-width: 1792px ),
-  'desktop-big':  ( min-width: 2000px )
+	'mobile-small': (
+		min-width: 405px
+	),
+	'mobile': (
+		min-width: 481px
+	),
+	'small': (
+		min-width: 768px
+	),
+	'large': (
+		min-width: 1024px
+	),
+	'desktop-small': (
+		min-width: 768px
+	),
+	'desktop': (
+		min-width: 1200px
+	),
+	'desktop-std': (
+		min-width: 1536px
+	),
+	'desktop-large': (
+		min-width: 1792px
+	),
+	'desktop-big': (
+		min-width: 2000px
+	)
 ) !default;
-
-

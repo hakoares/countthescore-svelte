@@ -9,7 +9,8 @@
 			return s;
 		});
 	};
-	const changeBackground = (selectorFiles: any) => {
+	const changeBackground = (selectorFiles: FileList | null) => {
+		if (!selectorFiles?.[0]) return;
 		settings.update((s) => {
 			s.backgroundImage = URL.createObjectURL(selectorFiles[0]);
 			return s;
@@ -32,7 +33,7 @@
 						>{$_('settings.slug', { default: "Let's get started" })}</span
 					>
 				</h3>
-				<button class="btn-ghost" on:click={exitHelper}>
+				<button class="btn-ghost" onclick={exitHelper}>
 					<svg
 						class="icon dark"
 						version="1.1"
@@ -100,7 +101,7 @@
 							<label class="btn">
 								<input
 									class="image-input"
-									on:change={(event) => changeBackground(event.target.files)}
+									onchange={(event) => changeBackground(event.currentTarget.files)}
 									type="file"
 								/>
 								<svg
@@ -138,7 +139,7 @@
 							{#if $settings.backgroundImage}
 								<button
 									class="btn-ghost"
-									on:click={() =>
+									onclick={() =>
 										settings.update((s) => {
 											s.backgroundImage = undefined;
 											return s;
@@ -170,13 +171,13 @@
 								<button
 									class="btn"
 									class:isActive={$settings.theme.text === 'light'}
-									on:click={() => toggleTextColor('light')}
+									onclick={() => toggleTextColor('light')}
 									>{$_('settings.text.light', { default: 'Light' })}</button
 								>
 								<button
 									class="btn"
 									class:isActive={$settings.theme.text === 'dark'}
-									on:click={() => toggleTextColor('dark')}
+									onclick={() => toggleTextColor('dark')}
 									>{$_('settings.text.dark', { default: 'Dark' })}</button
 								>
 							</div>
@@ -186,7 +187,7 @@
 				<div class="help-body-section">
 					<h4>{$_('settings.language.title', { default: 'Language' })}</h4>
 					<select class="dropdown" bind:value={$locale}>
-						{#each $locales as locale}
+						{#each $locales as locale (locale)}
 							<option class="item" value={locale}>{$_(locale)}</option>
 						{/each}
 					</select>
@@ -197,6 +198,93 @@
 {/if}
 
 <style lang="scss">
+	.btn {
+		padding: 0.5rem 0.8rem;
+		color: color(base);
+		background: color(lighterer);
+		border-radius: 48px;
+		display: flex;
+		align-items: center;
+		gap: 4px;
+		border: 1px solid color(lighterer);
+		width: fit-content;
+		.icon {
+			height: 18px;
+			fill: color(base);
+			&-upload {
+				margin-bottom: 3px;
+			}
+		}
+
+		&:hover {
+			/* text-decoration: underline; */
+			border: 1px solid color(lighter);
+			cursor: pointer;
+		}
+	}
+
+	.btn-ghost {
+		color: color(base);
+		background-color: transparent;
+		border: none;
+		display: flex;
+		justify-content: flex-end;
+		align-items: center;
+
+		.icon {
+			fill: color(base);
+			width: 1.1rem;
+			height: 1.1rem;
+			&.dark {
+				fill: color(base);
+			}
+		}
+		&:hover {
+			.icon.dark {
+				fill: color(darker);
+			}
+			.icon {
+				fill: color(darker);
+			}
+			cursor: pointer;
+		}
+	}
+
+	.input {
+		border: 1px solid color(lighterer);
+		border-radius: 4px;
+		padding: 0.5rem;
+		width: 50%;
+		font-size: 1rem;
+		color: color(dark);
+		&:focus {
+			outline: none;
+			border: 1px solid color(base) !important;
+		}
+		&:hover {
+			border: 1px solid color(lighter);
+		}
+	}
+
+	.dropdown {
+		border: 1px solid color(lighterer);
+		border-radius: 4px;
+		padding: 0.5rem;
+		min-width: 10rem;
+		font-size: 1rem;
+		color: color(dark);
+		background-color: color(paper);
+		&:focus {
+			outline: none;
+			border: 1px solid color(base) !important;
+		}
+		&:hover {
+			border: 1px solid color(lighter);
+
+			cursor: pointer;
+		}
+	}
+
 	.help {
 		position: absolute;
 
@@ -221,11 +309,14 @@
 
 			border-radius: 6px;
 			background: #f7f7f7;
-			box-shadow: 1.4px 1.4px 2px -14px rgba(0, 0, 0, 0.077),
-				3.2px 3.3px 4.6px -14px rgba(0, 0, 0, 0.112), 5.8px 5.9px 8.3px -14px rgba(0, 0, 0, 0.138),
+			box-shadow:
+				1.4px 1.4px 2px -14px rgba(0, 0, 0, 0.077),
+				3.2px 3.3px 4.6px -14px rgba(0, 0, 0, 0.112),
+				5.8px 5.9px 8.3px -14px rgba(0, 0, 0, 0.138),
 				9.6px 9.8px 13.8px -14px rgba(0, 0, 0, 0.162),
 				15.9px 16.1px 22.8px -14px rgba(0, 0, 0, 0.188),
-				27.7px 28.2px 39.8px -14px rgba(0, 0, 0, 0.223), 60px 61px 86px -14px rgba(0, 0, 0, 0.3);
+				27.7px 28.2px 39.8px -14px rgba(0, 0, 0, 0.223),
+				60px 61px 86px -14px rgba(0, 0, 0, 0.3);
 			display: flex;
 			flex-direction: column;
 

@@ -1,0 +1,14 @@
+# Same as .gitignore, plus lockfiles
+.DS_Store
+node_modules
+/build
+/.svelte-kit
+/package
+.env
+.env.*
+!.env.example
+.vercel
+.output
+
+pnpm-lock.yaml
+package-lock.json

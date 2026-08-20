@@ -2,7 +2,6 @@ import { settings } from '../utils/store';
 import { get } from 'svelte/store';
 
 export class KeyEvent {
-	currentKeyCode: number;
 	allEvents: { trigger: string[]; callback: () => void }[];
 	constructor() {
 		this.allEvents = [];
